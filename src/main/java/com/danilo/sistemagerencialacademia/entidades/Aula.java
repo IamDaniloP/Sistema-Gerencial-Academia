@@ -1,21 +1,32 @@
 package com.danilo.sistemagerencialacademia.entidades;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
+@Table(name = "aula")
 public class Aula {
 
+    @Id
+    @Column(name = "aula_id", nullable = false)
     private UUID id;
+
+    @Column(name = "funcionario_id", nullable = false)
     private Funcionario funcionario;
+
+    @Column(name = "quantidade_max_alunos", nullable = false)
     private Integer quantidadeMaximaAlunos;
-    private List<Aluno> alunosInscritos;
 
     public Aula(UUID id, Funcionario funcionario, Integer quantidadeMaximaAlunos) {
         this.id = id;
         this.funcionario = funcionario;
         this.quantidadeMaximaAlunos = quantidadeMaximaAlunos;
-        this.alunosInscritos = new ArrayList<>();
     }
 
     public UUID getId() {
@@ -40,17 +51,5 @@ public class Aula {
 
     public void setQuantidadeMaximaAlunos(Integer quantidadeMaximaAlunos) {
         this.quantidadeMaximaAlunos = quantidadeMaximaAlunos;
-    }
-
-    public List<Aluno> getAlunosInscritos() {
-        return alunosInscritos;
-    }
-
-    public void adicionarAluno(Aluno aluno) {
-        this.alunosInscritos.add(aluno);
-    }
-
-    public void removerAluno(Aluno aluno) {
-        this.alunosInscritos.remove(aluno);
     }
 }

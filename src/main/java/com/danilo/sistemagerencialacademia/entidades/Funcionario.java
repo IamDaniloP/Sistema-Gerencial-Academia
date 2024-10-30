@@ -1,27 +1,35 @@
 package com.danilo.sistemagerencialacademia.entidades;
 
-import com.danilo.sistemagerencialacademia.enums.Cargo;
+import com.danilo.sistemagerencialacademia.enums.CargoEnum;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import java.util.Date;
 import java.util.UUID;
 
+@Entity
+@Table(name = "funcionario")
 public class Funcionario extends Membro{
 
-    private Cargo cargo;
+    @Column(name = "cargo_id", nullable = false)
+    private CargoEnum cargoEnum;
+
+    @Column(name = "data_admissao", nullable = false)
     private Date dataAdmissao;
 
-    public Funcionario(UUID id, String nome, Date dataNascimento, Cargo cargo, Date dataAdmissao) {
+    public Funcionario(UUID id, String nome, Date dataNascimento, CargoEnum cargoEnum, Date dataAdmissao) {
         super(id, nome, dataNascimento);
-        this.cargo = cargo;
+        this.cargoEnum = cargoEnum;
         this.dataAdmissao = dataAdmissao;
     }
 
-    public Cargo getCargo() {
-        return cargo;
+    public CargoEnum getCargo() {
+        return cargoEnum;
     }
 
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
+    public void setCargo(CargoEnum cargoEnum) {
+        this.cargoEnum = cargoEnum;
     }
 
     public Date getDataAdmissao() {

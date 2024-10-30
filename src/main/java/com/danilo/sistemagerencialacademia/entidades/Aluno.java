@@ -1,12 +1,23 @@
 package com.danilo.sistemagerencialacademia.entidades;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 import java.util.Date;
 import java.util.UUID;
 
+@Entity
+@Table(name = "aluno")
 public class Aluno extends Membro{
 
+    @Column(nullable = false)
     private Integer diaCobrancaPagamento;
+
+    @Column(nullable = false)
     private Plano plano;
+
+    @Column(nullable = false)
     private Mensalidade mensalidade;
 
 

@@ -1,15 +1,23 @@
 package com.danilo.sistemagerencialacademia.entidades;
 
-
-import com.danilo.sistemagerencialacademia.enums.StatusMensalidade;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.UUID;
 
+@Entity
+@Table(name = "mensalidade")
 public class Mensalidade {
 
+    @Id
+    @Column(name = "mensalidade_id")
     private UUID id;
+
+    @ManyToOne
+    @JoinColumn(name = "status_mensalidade_id", nullable = false)
     private StatusMensalidade statusMensalidade;
+
+    @Column(nullable = false)
     private Date dataPagamento;
 
     public Mensalidade(UUID id, StatusMensalidade statusMensalidade, Date dataPagamento) {
