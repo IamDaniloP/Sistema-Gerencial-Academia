@@ -1,10 +1,21 @@
 package com.danilo.sistemagerencialacademia.entidades;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.util.UUID;
 
-// Será a própria api que terá os casos de uso.
+@Entity
+@Table(name = "academia")
 public class Academia {
+
+    @Id
+    @Column(name = "academia_id")
     private UUID id;
+
+    @Column(nullable = false)
     private String filial;
 
     public Academia(UUID id, String filial) {

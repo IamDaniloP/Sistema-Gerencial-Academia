@@ -14,17 +14,12 @@ public class Frequencia {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "aluno_id", nullable = false)
-    private Aluno aluno;
+    @JoinColumn(name = "aula_aluno_id", nullable = false)
+    private AulaAluno aulaAluno;
 
-    @ManyToOne
-    @JoinColumn(name = "aula_id", nullable = false)
-    private Aula aula;
-
-    public Frequencia(UUID id, Aluno aluno, Aula aula) {
+    public Frequencia(UUID id, AulaAluno aulaAluno) {
         this.id = id;
-        this.aluno = aluno;
-        this.aula = aula;
+        this.aulaAluno = aulaAluno;
     }
 
     public UUID getId() {
@@ -35,19 +30,11 @@ public class Frequencia {
         this.id = id;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public AulaAluno getAulaAluno() {
+        return aulaAluno;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
-    public Aula getAula() {
-        return aula;
-    }
-
-    public void setAula(Aula aula) {
-        this.aula = aula;
+    public void setAulaAluno(AulaAluno aulaAluno) {
+        this.aulaAluno = aulaAluno;
     }
 }

@@ -20,16 +20,16 @@ public class Aula {
     @Column(name = "desc_aula")
     private String descAula;
 
-    @Column(name = "funcionario_id", nullable = false)
-    private Funcionario funcionario;
+    @Column(name = "professor_id", nullable = false)
+    private Professor professor;
 
     @Column(name = "quantidade_max_alunos", nullable = false)
     private Integer quantidadeMaximaAlunos;
 
-    public Aula(UUID id, String descAula, Funcionario funcionario, Integer quantidadeMaximaAlunos) {
+    public Aula(UUID id, String descAula, Professor professor, Integer quantidadeMaximaAlunos) {
         this.id = id;
         this.descAula = descAula;
-        this.funcionario = funcionario;
+        this.professor = professor;
         this.quantidadeMaximaAlunos = quantidadeMaximaAlunos;
     }
 
@@ -49,12 +49,12 @@ public class Aula {
         this.descAula = descAula;
     }
 
-    public Funcionario getFuncionario() {
-        return funcionario;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
     public Integer getQuantidadeMaximaAlunos() {

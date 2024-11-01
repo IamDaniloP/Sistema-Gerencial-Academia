@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "aluno")
 public class Aluno extends Membro{
 
     @Column(nullable = false)

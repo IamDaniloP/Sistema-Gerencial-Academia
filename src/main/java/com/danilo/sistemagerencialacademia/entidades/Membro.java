@@ -1,16 +1,14 @@
 package com.danilo.sistemagerencialacademia.entidades;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "membro")
-public class Membro {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_membro")
+public abstract class Membro {
 
     @Id
     @Column
@@ -22,7 +20,8 @@ public class Membro {
     @Column(name = "data_nasc", nullable = false)
     private Date dataNascimento;
 
-    @Column(name = "academia_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "academia_id", nullable = false)
     private Academia academia;
 
     public Membro(UUID id, String nome, Date dataNascimento, Academia academia) {
