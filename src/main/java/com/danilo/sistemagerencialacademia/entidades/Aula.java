@@ -17,14 +17,18 @@ public class Aula {
     @Column(name = "aula_id", nullable = false)
     private UUID id;
 
+    @Column(name = "desc_aula")
+    private String descAula;
+
     @Column(name = "funcionario_id", nullable = false)
     private Funcionario funcionario;
 
     @Column(name = "quantidade_max_alunos", nullable = false)
     private Integer quantidadeMaximaAlunos;
 
-    public Aula(UUID id, Funcionario funcionario, Integer quantidadeMaximaAlunos) {
+    public Aula(UUID id, String descAula, Funcionario funcionario, Integer quantidadeMaximaAlunos) {
         this.id = id;
+        this.descAula = descAula;
         this.funcionario = funcionario;
         this.quantidadeMaximaAlunos = quantidadeMaximaAlunos;
     }
@@ -35,6 +39,14 @@ public class Aula {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public String getDescAula() {
+        return descAula;
+    }
+
+    public void setDescAula(String descAula) {
+        this.descAula = descAula;
     }
 
     public Funcionario getFuncionario() {

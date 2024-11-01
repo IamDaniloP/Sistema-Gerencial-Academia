@@ -19,13 +19,17 @@ public class Membro {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
+    @Column(name = "data_nasc", nullable = false)
     private Date dataNascimento;
 
-    public Membro(UUID id, String nome, Date dataNascimento) {
+    @Column(name = "academia_id", nullable = false)
+    private Academia academia;
+
+    public Membro(UUID id, String nome, Date dataNascimento, Academia academia) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
+        this.academia = academia;
     }
 
     public UUID getId() {
@@ -50,5 +54,13 @@ public class Membro {
 
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public Academia getAcademia() {
+        return academia;
+    }
+
+    public void setAcademia(Academia academia) {
+        this.academia = academia;
     }
 }

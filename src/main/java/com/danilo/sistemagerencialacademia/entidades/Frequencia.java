@@ -3,29 +3,36 @@ package com.danilo.sistemagerencialacademia.entidades;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "frequencia")
 public class Frequencia {
 
-    @Column(name = "data_ida", nullable = false)
-    private Date dataIda;
+    @Id
+    @Column(name = "frequencia_id")
+    private UUID id;
 
     @ManyToOne
     @JoinColumn(name = "aluno_id", nullable = false)
     private Aluno aluno;
 
-    public Frequencia(Date dataIda, Aluno aluno) {
-        this.dataIda = dataIda;
+    @ManyToOne
+    @JoinColumn(name = "aula_id", nullable = false)
+    private Aula aula;
+
+    public Frequencia(UUID id, Aluno aluno, Aula aula) {
+        this.id = id;
         this.aluno = aluno;
+        this.aula = aula;
     }
 
-    public Date getDataIda() {
-        return dataIda;
+    public UUID getId() {
+        return id;
     }
 
-    public void setDataIda(Date dataIda) {
-        this.dataIda = dataIda;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public Aluno getAluno() {
@@ -34,5 +41,13 @@ public class Frequencia {
 
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
+    }
+
+    public Aula getAula() {
+        return aula;
+    }
+
+    public void setAula(Aula aula) {
+        this.aula = aula;
     }
 }

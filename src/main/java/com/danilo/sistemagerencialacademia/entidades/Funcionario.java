@@ -12,24 +12,12 @@ import java.util.UUID;
 @Table(name = "funcionario")
 public class Funcionario extends Membro{
 
-    @Column(name = "cargo_id", nullable = false)
-    private CargoEnum cargoEnum;
-
     @Column(name = "data_admissao", nullable = false)
     private Date dataAdmissao;
 
-    public Funcionario(UUID id, String nome, Date dataNascimento, CargoEnum cargoEnum, Date dataAdmissao) {
-        super(id, nome, dataNascimento);
-        this.cargoEnum = cargoEnum;
+    public Funcionario(UUID id, String nome, Date dataNascimento, Date dataAdmissao, Academia academia) {
+        super(id, nome, dataNascimento, academia);
         this.dataAdmissao = dataAdmissao;
-    }
-
-    public CargoEnum getCargo() {
-        return cargoEnum;
-    }
-
-    public void setCargo(CargoEnum cargoEnum) {
-        this.cargoEnum = cargoEnum;
     }
 
     public Date getDataAdmissao() {

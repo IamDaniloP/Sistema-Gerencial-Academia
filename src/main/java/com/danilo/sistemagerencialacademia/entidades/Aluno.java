@@ -14,18 +14,10 @@ public class Aluno extends Membro{
     @Column(nullable = false)
     private Integer diaCobrancaPagamento;
 
-    @Column(nullable = false)
-    private Plano plano;
 
-    @Column(nullable = false)
-    private Mensalidade mensalidade;
-
-
-    public Aluno(UUID id, String nome, Date dataNascimento, Integer diaCobrancaPagamento, Plano plano, Mensalidade mensalidade) {
-        super(id, nome, dataNascimento);
+    public Aluno(UUID id, String nome, Date dataNascimento, Academia academia, Integer diaCobrancaPagamento) {
+        super(id, nome, dataNascimento, academia);
         this.diaCobrancaPagamento = diaCobrancaPagamento;
-        this.plano = plano;
-        this.mensalidade = mensalidade;
     }
 
     public Integer getDiaCobrancaPagamento() {
@@ -34,21 +26,5 @@ public class Aluno extends Membro{
 
     public void setDiaCobrancaPagamento(Integer diaCobrancaPagamento) {
         this.diaCobrancaPagamento = diaCobrancaPagamento;
-    }
-
-    public Plano getPlano() {
-        return plano;
-    }
-
-    public void setPlano(Plano plano) {
-        this.plano = plano;
-    }
-
-    public Mensalidade getMensalidade() {
-        return mensalidade;
-    }
-
-    public void setMensalidade(Mensalidade mensalidade) {
-        this.mensalidade = mensalidade;
     }
 }
