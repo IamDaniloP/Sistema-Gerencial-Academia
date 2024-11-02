@@ -18,12 +18,16 @@ public class Frequencia implements Serializable {
     @Column(name = "frequencia_id")
     private UUID id;
 
+    @Column(name = "data")
+    private Date date;
+
     @ManyToOne
-    @JoinColumn(name = "aula_aluno_id", nullable = false)
+    @JoinColumn(name = "aual_id", nullable = false)
     private AulaAluno aulaAluno;
 
-    public Frequencia(UUID id, AulaAluno aulaAluno) {
+    public Frequencia(UUID id, Date date, AulaAluno aulaAluno) {
         this.id = id;
+        this.date = date;
         this.aulaAluno = aulaAluno;
     }
 
@@ -33,6 +37,14 @@ public class Frequencia implements Serializable {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public AulaAluno getAulaAluno() {
