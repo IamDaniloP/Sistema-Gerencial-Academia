@@ -4,11 +4,17 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-public class Aluno extends Membro{
+@Table(name = "aluno")
+public class Aluno extends Membro implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Column(nullable = false)
     private Integer diaCobrancaPagamento;

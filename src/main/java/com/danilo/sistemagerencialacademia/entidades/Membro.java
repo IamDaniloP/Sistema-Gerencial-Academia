@@ -2,13 +2,16 @@ package com.danilo.sistemagerencialacademia.entidades;
 
 import jakarta.persistence.*;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo_membro")
-public abstract class Membro {
+@MappedSuperclass
+public abstract class Membro implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column

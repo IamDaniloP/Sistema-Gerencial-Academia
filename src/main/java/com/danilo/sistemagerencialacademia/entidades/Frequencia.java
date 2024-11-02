@@ -2,12 +2,17 @@ package com.danilo.sistemagerencialacademia.entidades;
 
 import jakarta.persistence.*;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Table(name = "frequencia")
-public class Frequencia {
+public class Frequencia implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "frequencia_id")
