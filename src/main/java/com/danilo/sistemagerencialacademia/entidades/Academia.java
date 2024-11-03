@@ -23,6 +23,8 @@ public class Academia implements Serializable {
     @Column(nullable = false)
     private String filial;
 
+    public Academia() {}
+
     public Academia(UUID id, String filial) {
         this.id = id;
         this.filial = filial;

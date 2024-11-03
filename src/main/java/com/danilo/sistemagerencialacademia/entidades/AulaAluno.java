@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "aula_aluno")
+@Table(name = "aula_aluno", uniqueConstraints = {@UniqueConstraint(columnNames = {"aluno_id", "aula_id"})})
 public class AulaAluno implements Serializable {
 
     @Serial
@@ -17,11 +17,15 @@ public class AulaAluno implements Serializable {
     @Column(name = "aluno_aula_id")
     private UUID id;
 
-    @Column(name = "aluno_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "aluno_id", nullable = false)
     private Aluno aluno;
 
-    @Column(name = "aula_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "aula_id", nullable = false)
     private Aula aula;
+
+    public AulaAluno() {}
 
     public AulaAluno(UUID id, Aluno aluno, Aula aula) {
         this.id = id;

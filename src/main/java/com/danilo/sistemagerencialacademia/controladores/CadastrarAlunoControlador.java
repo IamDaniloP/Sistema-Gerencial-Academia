@@ -1,6 +1,6 @@
 package com.danilo.sistemagerencialacademia.controladores;
 
-import com.danilo.sistemagerencialacademia.casosdeuso.CadastrarAulaCasoDeUso;
+import com.danilo.sistemagerencialacademia.casosdeuso.CadastrarMembroCasoDeUso;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,23 +12,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/aula")
-public class CadastrarAulaControlador {
+@RequestMapping("/aluno")
+public class CadastrarAlunoControlador {
 
     @Autowired
-    private CadastrarAulaCasoDeUso cadastrarAulaCasoDeUso;
+    private CadastrarMembroCasoDeUso cadastrarAlunoCasoDeUso;
 
     @PostMapping()
-    public ResponseEntity cadastrarAula(@RequestBody @Valid AulaDto aulaDto) {
+    public ResponseEntity cadastrarAluno(@RequestBody @Valid AlunoDto alunoDto) {
 
-        this.cadastrarAulaCasoDeUso.executar(aulaDto.descAula, aulaDto.quantidadeMaxAlunos, aulaDto.professorId);
+        this.cadastrarAlunoCasoDeUso.executar(alunoDto.nome, alunoDto.dataNascimento, alunoDto.academiaId, alunoDto.diaCobrancaPagamento);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    public record AulaDto(@NotBlank String descAula, @NotBlank Integer quantidadeMaxAlunos, @NotNull UUID professorId) {}
+    public record AlunoDto(@NotBlank String nome, @NotNull Date dataNascimento, @NotNull UUID academiaId, @NotBlank Integer diaCobrancaPagamento) {}
 }
-
-

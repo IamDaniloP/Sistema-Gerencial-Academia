@@ -1,8 +1,10 @@
 package com.danilo.sistemagerencialacademia.casosdeuso;
 
+import com.danilo.sistemagerencialacademia.entidades.Academia;
 import com.danilo.sistemagerencialacademia.entidades.Aluno;
 import com.danilo.sistemagerencialacademia.entidades.Aula;
 import com.danilo.sistemagerencialacademia.entidades.Professor;
+import com.danilo.sistemagerencialacademia.repositorio.IAcademiaRepositorio;
 import com.danilo.sistemagerencialacademia.repositorio.IAulaRepositorio;
 import com.danilo.sistemagerencialacademia.repositorio.IProfessorRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,23 +14,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class CadastrarAulaCasoDeUso {
+public class CadastrarAcademiaCasoDeUso {
 
     @Autowired
-    private IAulaRepositorio aulaRepositorio;
+    private IAcademiaRepositorio academiaRepositorio;
 
-    @Autowired
-    private IProfessorRepositorio professorRepositorio;
-
-    public void executar(String descAula, Integer quantidadeMaxAlunos, UUID professorId) {
-
-        Optional<Professor> professor = professorRepositorio.findById(professorId);
-
-        if (professor.isEmpty()) {
-            throw new RuntimeException("Professor não encontrado");
-        }
-
-        Aula aula = new Aula(UUID.randomUUID(), descAula, professor.get(), quantidadeMaxAlunos);
-        aulaRepositorio.save(aula);
+    public void executar(String filial) {
+        Academia academia = new Academia(UUID.randomUUID(), filial);
+        academiaRepositorio.save(academia);
     }
 }

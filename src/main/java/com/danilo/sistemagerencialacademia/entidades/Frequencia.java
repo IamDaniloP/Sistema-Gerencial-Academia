@@ -25,6 +25,8 @@ public class Frequencia implements Serializable {
     @JoinColumn(name = "aual_id", nullable = false)
     private AulaAluno aulaAluno;
 
+    public Frequencia() {}
+
     public Frequencia(UUID id, Date date, AulaAluno aulaAluno) {
         this.id = id;
         this.date = date;

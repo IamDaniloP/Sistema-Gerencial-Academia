@@ -32,7 +32,7 @@ public class RegistrarAlunoEmAulaCasoDeUso {
         Aula aula = aulaRepositorio.findById(aulaId).get();
         Aluno aluno = alunoRepositorio.findById(alunoId).get();
 
-        if (aulaAlunoRepositorio.consultarQuantidadeDeAlunoPorAula(aula.getId()) > aula.getQuantidadeMaximaAlunos()) {
+        if (aulaAlunoRepositorio.consultarQuantidadeDeAlunoPorAula(aulaId) >= aula.getQuantidadeMaximaAlunos()) {
             throw new RuntimeException("Capacidade máxima de alunos atingida");
         }
 

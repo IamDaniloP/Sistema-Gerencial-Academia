@@ -10,9 +10,9 @@ import java.util.UUID;
 
 
 public interface IAulaAlunoRepositorio extends JpaRepository<AulaAluno, UUID> {
-    @Query("SELECT a FROM AulaAluno a WHERE a.aula = :aulaId AND a.aluno = :alunoId ")
+    @Query("SELECT a FROM AulaAluno a WHERE a.aula.id = :aulaId AND a.aluno.id = :alunoId ")
     Optional<AulaAluno> consultarInscricaoDeAlunoPorAula(@Param("aulaId") UUID aulaId, @Param("alunoId") UUID alunoId);
 
-    @Query("SELECT COUNT(a) FROM AulaAluno a WHERE a.aula = :aulaId")
+    @Query("SELECT COUNT(a) FROM AulaAluno a WHERE a.aula.id = :aulaId")
     Integer consultarQuantidadeDeAlunoPorAula(@Param("aulaId") UUID aulaId);
 }

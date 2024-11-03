@@ -7,12 +7,12 @@ import com.danilo.sistemagerencialacademia.repositorio.IFrequenciaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class RegistrarFrequenciaDoAlunoEmAulaCasoDeUso {
+public class ConsultarFrequenciaAlunoCasoDeUso {
 
     @Autowired
     private IFrequenciaRepositorio frequenciaRepositorio;
@@ -20,7 +20,7 @@ public class RegistrarFrequenciaDoAlunoEmAulaCasoDeUso {
     @Autowired
     private IAulaAlunoRepositorio aulaAlunoRepositorio;
 
-    public void executar(UUID aulaId, UUID alunoId) {
+    public List<Frequencia> executar(UUID aulaId, UUID alunoId) {
 
         Optional<AulaAluno> aulaAluno = aulaAlunoRepositorio.consultarInscricaoDeAlunoPorAula(aulaId, alunoId);
 
@@ -28,7 +28,6 @@ public class RegistrarFrequenciaDoAlunoEmAulaCasoDeUso {
             throw new RuntimeException("Não foi encontrado a inscrição do aluno na aula");
         }
 
-        Frequencia frequencia = new Frequencia(UUID.randomUUID(), new Date(),aulaAluno.get());
-        frequenciaRepositorio.save(frequencia);
+        return frequenciaRepositorio.consultarFrequenciaDeAlunoPorAula(aulaAluno.get().getId());
     }
 }

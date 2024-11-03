@@ -31,6 +31,8 @@ public class Aula implements Serializable {
     @Column(name = "quantidade_max_alunos", nullable = false)
     private Integer quantidadeMaximaAlunos;
 
+    public Aula() {}
+
     public Aula(UUID id, String descAula, Professor professor, Integer quantidadeMaximaAlunos) {
         this.id = id;
         this.descAula = descAula;

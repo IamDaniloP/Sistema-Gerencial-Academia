@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ListarAulasDisponiveisCasoDeUso {
+public class ConsultarAulasDisponiveisCasoDeUso {
 
     @Autowired
     private IAulaRepositorio aulaRepositorio;

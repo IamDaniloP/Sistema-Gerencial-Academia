@@ -27,6 +27,8 @@ public abstract class Membro implements Serializable {
     @JoinColumn(name = "academia_id", nullable = false)
     private Academia academia;
 
+    public Membro() {}
+
     public Membro(UUID id, String nome, Date dataNascimento, Academia academia) {
         this.id = id;
         this.nome = nome;

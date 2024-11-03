@@ -19,6 +19,7 @@ public class Aluno extends Membro implements Serializable {
     @Column(nullable = false)
     private Integer diaCobrancaPagamento;
 
+    public Aluno() {}
 
     public Aluno(UUID id, String nome, Date dataNascimento, Academia academia, Integer diaCobrancaPagamento) {
         super(id, nome, dataNascimento, academia);

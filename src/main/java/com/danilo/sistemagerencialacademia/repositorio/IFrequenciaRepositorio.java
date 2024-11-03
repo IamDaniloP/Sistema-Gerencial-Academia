@@ -10,6 +10,6 @@ import java.util.UUID;
 
 public interface IFrequenciaRepositorio extends JpaRepository<Frequencia, UUID> {
 
-    @Query("SELECT f FROM Frequencia f WHERE f.aulaAluno = :aulaAlunoId")
+    @Query("SELECT f FROM Frequencia f WHERE f.aulaAluno.id = :aulaAlunoId")
     List<Frequencia> consultarFrequenciaDeAlunoPorAula(@Param("aulaAlunoId") UUID aulaAlunoId);
 }

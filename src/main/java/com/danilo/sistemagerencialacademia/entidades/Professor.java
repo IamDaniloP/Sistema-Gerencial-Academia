@@ -20,6 +20,8 @@ public class Professor extends Membro implements Serializable {
     @Column(nullable = false)
     private String especializacao;
 
+    public Professor() {}
+
     public Professor(UUID id, String nome, Date dataNascimento, Date dataAdmissao, String especializacao, Academia academia) {
         super(id, nome, dataNascimento, academia);
         this.dataAdmissao = dataAdmissao;
