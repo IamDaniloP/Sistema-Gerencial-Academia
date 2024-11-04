@@ -3,6 +3,7 @@ package com.danilo.sistemagerencialacademia.controladores;
 import com.danilo.sistemagerencialacademia.casosdeuso.ConsultarAcademiasCasoDeUso;
 import com.danilo.sistemagerencialacademia.entidades.Academia;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,6 @@ public class ConsultarAcademiaControlador {
     public ResponseEntity consultarAcademia() {
         List<Academia> academias = consultarAcademiasCasoDeUso.executar();
 
-        return ResponseEntity.ok().body(academias);
+        return ResponseEntity.status(HttpStatus.FOUND).body(academias);
     }
 }

@@ -5,6 +5,7 @@ import com.danilo.sistemagerencialacademia.entidades.Frequencia;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,6 @@ public class ConsultarFrequenciaAlunoControlador {
     @GetMapping
     public ResponseEntity consultarFrequenciaAluno(@RequestParam UUID aulaId, @RequestParam UUID alunoId) {
         List<Frequencia> frequenciasAluno = consultarFrequenciaAlunoCasoDeUso.executar(aulaId, alunoId);
-        return ResponseEntity.ok().body(frequenciasAluno);
+        return ResponseEntity.status(HttpStatus.FOUND).body(frequenciasAluno);
     }
 }

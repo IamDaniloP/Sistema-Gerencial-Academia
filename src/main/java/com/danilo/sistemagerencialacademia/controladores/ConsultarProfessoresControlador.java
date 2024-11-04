@@ -5,6 +5,7 @@ import com.danilo.sistemagerencialacademia.casosdeuso.ConsultarProfessoresCasoDe
 import com.danilo.sistemagerencialacademia.entidades.Aluno;
 import com.danilo.sistemagerencialacademia.entidades.Professor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,6 @@ public class ConsultarProfessoresControlador {
     @GetMapping()
     public ResponseEntity consultarAluno() {
         List<Professor> professores = consultarProfessoresCasoDeUso.executar();
-        return ResponseEntity.ok().body(professores);
+        return ResponseEntity.status(HttpStatus.FOUND).body(professores);
     }
 }

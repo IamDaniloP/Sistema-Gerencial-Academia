@@ -5,6 +5,7 @@ import com.danilo.sistemagerencialacademia.entidades.AulaAluno;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +26,7 @@ public class RegistrarFrequenciaDoAlunoControlador {
     public ResponseEntity registrarFrequenciaDoAluno(@Valid @RequestBody FrequenciaDto frequenciaDto) {
 
         registrarFrequenciaDoAlunoCasoDeUso.executar(frequenciaDto.aulaId, frequenciaDto.alunoId);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     public record FrequenciaDto(@NotNull Date date, @NotNull UUID aulaId, @NotNull UUID alunoId) {}
